@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 
-DATA_PATH   = "data/Namazi_Dataset_ver1.csv"   # update path if needed
+DATA_PATH   = "data/Namazi_Dataset.csv"   # update path if needed
 TEST_SIZE   = 0.30
 RANDOM_SEED = 101
 SVM_C       = 6
