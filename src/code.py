@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Liver Transplantation Outcome Prediction
-CS 505 – Python in Machine Learning, Spring 2021
-University of Idaho — Dr. Jamil
+CS 577 – Python in Machine Learning, Spring 2021
+University of Idaho — Dr. Min Xian
 
 Task: Binary classification of post-transplant survival outcome.
 Dataset: Namazi_Dataset_ver1.csv (private clinical dataset, not included).
