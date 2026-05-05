@@ -1,7 +1,7 @@
 # Liver Transplantation Outcome Prediction
 
 Binary classification of post-transplant survival using a custom missing-data-aware SVM pipeline.  
-Developed as the final project for CS 505 – Python in Machine Learning (Spring 2021), University of Idaho, under Dr. Jamil.
+Developed as the final project for CS 577 – Python in Machine Learning (Spring 2021), University of Idaho, under supervision of Dr. Min Xian.
 
 > **Note:** The dataset is private clinical data and is not included in this repository.  
 > See [`data/README.md`](data/README.md) for the expected data format.
@@ -129,4 +129,4 @@ python src/liver_transplantation.py
 ## Acknowledgements
 
 - Dataset provided by the Namazi research group (private, clinical)
-- Course: CS 505 – Python in Machine Learning, Spring 2021, University of Idaho
+- Course: CS 577 – Python in Machine Learning, Spring 2021, COmputer Science Department, University of Idaho
