@@ -1,7 +1,7 @@
 # Liver Transplantation Outcome Prediction
 
-Binary classification of post-transplant survival using a custom missing-data-aware SVM pipeline.  
-Developed as the final project for CS 577 – Python in Machine Learning (Spring 2021), University of Idaho, under supervision of Dr. Min Xian.
+Binary classification of post-transplant survival using a custom missing-data-aware Cost-Sensitive SVM (CS-SVM) pipeline.
+Developed as the final project for CS 577 – Python in Machine Learning (Spring 2021), University of Idaho.
 
 > **Note:** The dataset is private clinical data and is not included in this repository.  
 > See [`data/README.md`](data/README.md) for the expected data format.
@@ -11,9 +11,12 @@ Developed as the final project for CS 577 – Python in Machine Learning (Spring
 ## Problem
 
 Predicting patient survival after liver transplantation from pre-operative clinical features.  
-The dataset contains significant missing data, which is the core challenge this project addresses.
+This project addresses two core challenges common in medical datasets:
 
-| Label | Meaning |
+1. **Missing data** — ~27% overall missing rate across features
+2. **Class imbalance** — 481 survived vs. 131 did not survive
+
+| Label(Death) | Meaning |
 |---|---|
 | 0 | Did not survive |
 | 1 | Survived |
@@ -22,24 +25,24 @@ The dataset contains significant missing data, which is the core challenge this 
 
 ## Approach
 
-### Key challenge: Missing data
+### Key challenge: Missing data + Class imbalance
 
-Rather than applying a single global imputation strategy, this project uses a **3-level hierarchical strategy** that selects the most appropriate classifier based on each test sample's missing value pattern:
+Rather than applying a single global imputation strategy, this project uses a **3-level complete view tree framework** with Cost-Sensitive SVM (CS-SVM) that selects the most appropriate classifier based on each test sample's missing value pattern:
 
 ```
 Test sample
   │
   ├─ No missing values
-  │     → Full-feature SVM (trained on complete cases)
+  │     → CS-SVM trained on complete cases (Complete View 1)
   │
   ├─ Missing features are rarely missing in training set (≤3 occurrences)
-  │     → Level-1 SVM (trained on feature subset excluding those rare columns)
+  │     → Level-1 CS-SVM (trained on feature subset excluding those rare columns)
   │
   ├─ Missing features are frequently missing in training set (≥10 occurrences)
-  │     → Level-2 SVM (trained on broader feature subset)
+  │     → Level-2 CS-SVM (trained on broader feature subset)
   │
   └─ Fallback
-        → KNN imputation (k=3) → full-feature SVM
+        → KNN imputation (k=3) → full-feature CS-SVM
 ```
 
 ### Baselines
@@ -60,8 +63,8 @@ Raw CSV
   → 70 / 30 stratified train-test split
   → Missing data analysis (identify rare vs. frequent missing features)
   → MinMax scaling (per feature subset)
-  → 3-level SVM prediction  ←  proposed method
-  → KNN imputation → Decision Tree / SVM  ←  baselines
+  → 3-level CS-SVM prediction  ←  proposed method
+  → KNN imputation → Decision Tree / CS-SVM  ←  baselines
   → Classification report (precision, recall, F1, per class)
 ```
 
@@ -70,7 +73,7 @@ Raw CSV
 ## Results
 
 Evaluated using `sklearn.metrics.classification_report` with 4 decimal precision.  
-The proposed 3-level SVM outperforms both baselines on the minority class (non-survival),
+The proposed 3-level CS-SVM outperforms both baselines on the minority class (non-survival),
 which is the clinically relevant outcome.
 
 ---
@@ -106,7 +109,7 @@ source .venv/bin/activate      # macOS / Linux
 pip install -r requirements.txt
 
 # 4. Place the dataset
-#    Copy your CSV to: data/Namazi_Dataset_ver1.csv
+#    Copy your CSV to: data/Namazi_Dataset.csv
 #    (See data/README.md for the expected column format)
 
 # 5. Run
@@ -129,4 +132,4 @@ python src/liver_transplantation.py
 ## Acknowledgements
 
 - Dataset provided by the Namazi research group (private, clinical)
-- Course: CS 577 – Python in Machine Learning, Spring 2021, COmputer Science Department, University of Idaho
+- Course: CS 577 – Python in Machine Learning, Spring 2021, Computer Science Department, University of Idaho
