@@ -1,7 +1,7 @@
 # Liver Transplantation Outcome Prediction
 
 Binary classification of post-transplant survival using a custom missing-data-aware Cost-Sensitive SVM (CS-SVM) pipeline.
-Developed as the final project for CS 577 – Python in Machine Learning (Spring 2021), under the supervision of Dr. Min Xian at the Computer Science Department at hte University of Idaho.
+Developed as the final project for CS 577 – Python in Machine Learning, under the supervision of Dr. Min Xian at the Computer Science Department at hte University of Idaho.
 
 > **Note:** The dataset is private clinical data and is not included in this repository.  
 > See [`data/README.md`](data/README.md) for the expected data format.
@@ -132,4 +132,4 @@ python src/code.py
 ## Acknowledgements
 
 - Dataset provided by the Namazi research group (private, clinical)
-- Course: CS 577 – Python in Machine Learning, Spring 2021, Computer Science Department, University of Idaho
+- Course: CS 577 – Python in Machine Learning, Computer Science Department, University of Idaho
