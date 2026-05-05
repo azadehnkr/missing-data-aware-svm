@@ -5,7 +5,7 @@ CS 577 – Python in Machine Learning, Spring 2021
 University of Idaho — Dr. Min Xian
 
 Task: Binary classification of post-transplant survival outcome.
-Dataset: Namazi_Dataset_ver1.csv (private clinical dataset, not included).
+Dataset: Namazi_Dataset.csv (private clinical dataset, not included).
 
 Pipeline:
   1. Preprocessing  — label encoding, one-hot encoding of multi-label cause column
