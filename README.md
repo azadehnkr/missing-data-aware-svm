@@ -83,7 +83,7 @@ which is the clinically relevant outcome.
 ```
 .
 ├── src/
-│   └── liver_transplantation.py   # Full pipeline: preprocessing, models, evaluation
+│   └── code.py   # Full pipeline: preprocessing, models, evaluation
 ├── data/
 │   └── README.md                  # Data format description (dataset not included)
 ├── requirements.txt
@@ -113,7 +113,7 @@ pip install -r requirements.txt
 #    (See data/README.md for the expected column format)
 
 # 5. Run
-python src/liver_transplantation.py
+python src/code.py
 ```
 
 ---
